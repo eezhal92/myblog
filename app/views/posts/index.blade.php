@@ -3,5 +3,9 @@
 @foreach($artikel as $a)
   {{ $a->title }}<br>
   {{ $a->body }} <br>
-  <hr>	
+  <div>
+  	{{ link_to_route('posts.show', 'Lihat', [$a->id]) }}
+  	{{ link_to_route('posts.edit', 'Edit', [$a->id]) }}
+  </div>
+ <hr>	
 @endforeach
