@@ -13,7 +13,7 @@ class Post extends Eloquent
 
 	public function categories()
 	{
-		return $this->belongsToMany('Category', 'post_cateogories');
+		return $this->belongsToMany('Category', 'post_categories');
 	}
 
 } 
