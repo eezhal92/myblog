@@ -24,3 +24,7 @@ Route::get('blogs', [
 	'as' => 'belog',
 	'uses' => 'BlogsController@index'
 ]);
+
+Route::resource('posts', 'PostsController');
+
+Route::resource('categories','CategoriesController');
