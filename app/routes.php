@@ -15,3 +15,12 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+// Route::get('blogs', function() {
+// 	die('haloo ini blog');
+// });
+
+Route::get('blogs', [
+	'as' => 'belog',
+	'uses' => 'BlogsController@index'
+]);
