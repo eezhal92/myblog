@@ -87,7 +87,9 @@ class PostsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$post = Post::find($id);
+
+		return View::make('posts.edit', compact('post'));
 	}
 
 
@@ -99,7 +101,34 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(
+			[
+ 				'title' => Input::get('title'),
+ 				'body' => Input::get('body')
+			], 
+			[
+				'title' => 'required|min:2',
+				'body' => 'required'
+			]
+		);
+
+		if($validator->fails()) {
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+
+		$post = Post::find($id)->update([
+			'title' => Input::get('title'),
+			'body' => Input::get('body'),
+			'slug' => Str::slug(Input::get('title')) // eg: Hello World -> hello-world
+		]);
+
+		if($post) {
+			return Redirect::route('posts.index')
+					->with('message', 'Post has been update');
+		} else {
+			return Redirect::route('posts.index');
+		}
+			
 	}
 
 
