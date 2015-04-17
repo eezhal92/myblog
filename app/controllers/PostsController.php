@@ -140,7 +140,11 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$post = Post::find($id);
+
+		if($post->delete()) {
+			return Redirect::route('posts.index');
+		}
 	}
 
 
