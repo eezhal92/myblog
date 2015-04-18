@@ -1,3 +1,7 @@
+extends('master')
+
+@section('content')
+
 {{ Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'put']) }}
 	<div>
 		<label>Title</label>
@@ -13,3 +17,5 @@
 		{{ Form::submit('Update') }}
 	</div>
 {{ Form::close() }}
+
+@stop

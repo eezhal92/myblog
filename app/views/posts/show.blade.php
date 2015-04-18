@@ -1,3 +1,7 @@
+extends('master')
+
+@section('content')
+
 <h1>{{ $post->title }}</h1>
 
 {{ $post->body }}<br>
@@ -8,3 +12,5 @@
 	</li>{{ $cat->name }}</li><br>
 @endforeach
 </ul>
+
+@stop

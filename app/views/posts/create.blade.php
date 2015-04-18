@@ -1,3 +1,7 @@
+@extends('master')
+
+@section('content')
+
 <form action="{{ route('posts.store') }}" method="post">
 	{{ Form::token() }}
 	<div>
@@ -14,3 +18,5 @@
 		<input type="submit" value="save">
 	</div>
 </form>
+
+@stop
